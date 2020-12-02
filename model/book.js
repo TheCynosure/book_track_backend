@@ -6,8 +6,9 @@ var BookSchema = new mongoose.Schema({
     title: {type: String, unique: true, require: true},
     current_page: {type: Number, default: 0},
     length: {type: Number, required: true}
-  }, {
-    collection: 'books'
 });
 
-module.exports = mongoose.model("Book", BookSchema);
+module.exports = {
+    Book: mongoose.model("Book", BookSchema),
+    History: mongoose.model("History", BookSchema)
+};

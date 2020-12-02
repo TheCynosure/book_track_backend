@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var controller = require('../controller/history');
 
-router.get('/', function(req, res) {
-  res.send('Hello from history');
-})
+router.route('/')
+    .post(controller.create)
+    .get(controller.listAll)
 
 module.exports = router;
