@@ -5,7 +5,8 @@ var BookSchema = new mongoose.Schema({
     updatedAt: {type: Date, default: Date.now},
     title: {type: String, unique: true, require: true},
     current_page: {type: Number, default: 0},
-    length: {type: Number, required: true}
+    length: {type: Number, required: true},
+    link: {type: String, default: ''}
 });
 
 module.exports = {
