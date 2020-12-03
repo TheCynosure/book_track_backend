@@ -7,9 +7,9 @@ var mongoose = require('mongoose');
 
 var cors = require("cors");
 
-var indexRouter = require('./routes/index');
 var bookRouter = require('./routes/books');
 var historyRouter = require('./routes/history');
+var gutenbergRouter = require('./routes/gutenberg');
 
 var app = express();
 app.use(cors())
@@ -29,6 +29,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/book_track', {useNewUrlParser: true,
 
 app.use('/books', bookRouter);
 app.use('/history', historyRouter);
+app.use('/gbooks', gutenbergRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
