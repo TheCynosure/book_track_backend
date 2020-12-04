@@ -37,6 +37,21 @@ function deleteBook(req, res) {
 
 function updateBook(req, res) {
   let bookToUpdate = new Book(req.body);
+  Book.findOne({ title: bookToUpdate.title}, (err, result) => {
+      if (err) {
+        console.error(error);
+        res.status(404);
+        res.send();
+      } else {
+
+        result.current_page = bookToUpdate.current_page;
+        result.length = bookToUpdate.length;
+        // Then update.
+        result.save().then(() => {
+          // We saved the new updated book, lets write the change to the data.
+        })
+      }
+  });
   Book.findOneAndUpdate({ title: bookToUpdate.title }, bookToUpdate, {}, (err, result) => {
     if (err) {
       res.status(404);
